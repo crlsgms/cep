@@ -1,0 +1,27 @@
+{
+  "name": "cep",
+  "version": "1.0.0",
+  "description": "Projeto react para consumo api correios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crlsgms/cep.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crlsgms/cep/issues"
+  },
+  "homepage": "https://github.com/crlsgms/cep#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-correios": "^3.0.2",
+    "nodemon": "^2.0.6"
+  }
+}
