@@ -17,7 +17,9 @@ export default function ConsultaCep() {
         let url = `http://localhost:3000/cep/${cep}` // não precisa mais chamar o this.state.cep
         axios.get(url)
             .then(resp => {
+                console.log('Entrou')
                 console.log(resp.data) // mostra os valores no console
+                setResultado(resp.data)
             })
 
     }
@@ -27,10 +29,16 @@ export default function ConsultaCep() {
             <form>
                 <div className="form-group">
                     <label> CEP </label>
-                    <input type="number" className="form-control" name="cep" onChange={ evento => setCep(evento.target.value)} />
+                    <input type="number" className="form-control" name="cep" onChange={evento => setCep(evento.target.value)} />
                 </div>
                 <div className="form-group">
                     <button type="button" className="btn btn-primary" onClick={chamaAPI}> Chama API </button>
+                </div>
+                <div>
+                    <h3> Logradouro: {resultado.logradouro}</h3>
+                    <h3> Bairro: {resultado.bairro}</h3>
+                    <h3> Localidade: {resultado.localidade}</h3>
+                    <h3> UF: {resultado.uf}</h3>
                 </div>
             </form>
         </div>
