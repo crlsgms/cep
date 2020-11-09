@@ -11,10 +11,12 @@ let Correios = require('node-correios');
 let correios = new Correios();
 
 //criando uma rota GET
-server.get('/cep', (req,res) => {
-    correios.consultaCEP({cep: '14402303'})
+server.get('/cep/:cep', (req,res) => {
+    // recuperando o que vem no browser
+    let cep = req.params.cep
+    correios.consultaCEP({cep: cep})
     .then(resultado => {
-        console.log(resultado)
+        console.log(resultado.data)
         res.send(resultado)
     })
 })
