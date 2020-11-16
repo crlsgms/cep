@@ -26,17 +26,18 @@ server.get('/cep/:cep', (req,res) => {
 server.post('/frete', (req, res) => {
     // nCdServico é o tipo de frete 4014 é sedex a vista
     // nCdFormato = 1 é caixa
-    console.log('entrou')
+    // vamos recuperar o valor enviado pelo front, trocando os valores hardcoded
+    //console.log('entrou')
     let argumentos = {
-        nCdServico: 4014,
-        sCepOrigem: 14401295,
-        sCepDestino: 14405191,
-        nVlPeso: 1,
-        nCdFormato: 1,
-        nVlComprimento: 30,
-        nVlAltura: 30,
-        nVlLargura: 30,
-        nVlDiametro: 30
+        nCdServico: usuario.servico,
+        sCepOrigem: usuario.origem,
+        sCepDestino: usuario.destino,
+        nVlPeso: usuario.peso,
+        nCdFormato: usuario.formato,
+        nVlComprimento: usuario.comprimento,
+        nVlAltura: usuario.altura,
+        nVlLargura: usuario.largura,
+        nVlDiametro: usuario.diametro
     }
     correios.calcPreco(argumentos)
         .then(resposta => {
@@ -44,11 +45,9 @@ server.post('/frete', (req, res) => {
             console.log('testando')
             res.send(resposta)
         })
-        .catch(error => {​​​​​
-
-            console.log(error)
-
-        }​​​​​) 
+        // .catch(error => {​​​​​
+        //     console.log(error)
+        // }​​​​​) 
 })
 
 //subindo o servidor
